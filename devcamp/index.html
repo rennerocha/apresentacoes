@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Django: framework web para perfeccionistas com prazos</title>
+
+		<meta name="description" content="Django: framework web para perfeccionistas com prazos">
+		<meta name="author" content="Renne Rocha">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+			<section>
+				<img src="django-logo-negative.png" style="">
+				<h3>
+					<em>Django: o framework web para perfeccionistas com prazos.</em>
+				</h3>
+				<br>
+				<img src="logo_devcamp.png" style="">
+				<p><i style="font-size: 20px;">11 / 05 / 2013</i></p>
+			</section>
+
+
+			<section>
+				<h2>Renne Rocha</h2>
+				<br>
+				<div class="fragment">Engenheiro Eletricista - Unicamp</div>
+				<br>
+				<div class="fragment">Desenvolvedor Python Nokia Siemens Networks</div>
+				<br>
+				<div class="fragment">Organizador do Caipira Ágil<br>http://caipiraagil.com/</div>
+				<br>
+				<div class="fragment">Fundador do Laboratório Hacker de Campinas<br>http://lhc.net.br/</div>
+			</section>
+
+            <section>
+				<br><br><br>
+                <h1>O que é Django?</h1>
+            </section>
+
+            <section>
+				<br><br><br>
+				<p>
+				<b>Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.</b>
+				</p>
+			</section>
+
+			<section>
+				<br><br><br>
+				<h1>Principais funcionalidades</h1>
+			</section>
+
+			<section>
+				<h2>Object-relational mapper (ORM)</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Seus modelos de dados são definidos&nbsp;<b>totalmente</b> em Python.</p>
+				<br>
+				<p class="fragment" data-fragment-index="1">Fornece uma API para acesso ao banco de dados.</p>
+				<br>
+				<p class="fragment" data-fragment-index="2">Independe de sistema de gerenciamento de banco de dados.</p>
+			</section>
+
+			<section>
+				<h2>Interface de administração automática</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Interface pronta para seu utilizada em produção para entrada, consulta, atualização e exclusão de dados.</p>
+				<br>
+				<p class="fragment" data-fragment-index="1">C R U D.</p>
+			</section>
+
+			<section>
+				<h2>URLs amigáveis</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Esquema limpo e elegante para definição de URLs</p>
+				<br>
+				<p class="fragment" data-fragment-index="1">Definidos em um módulo Python que faz o mapeamento de padrões de URL (expressões regulares) com funções Python (views).</p>
+			</section>
+
+			<section>
+				<h2>Sistema de templates</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Linguagem de templates amigável para designers.</p>
+				<br>
+				<p class="fragment" data-fragment-index="1">Facilita separação de código e apresentação.</p>
+			</section>
+
+			<section>
+				<h2>Internacionalização</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Suporte a aplicações multi-idiomas.</p>
+				<br>
+				<p class="fragment" data-fragment-index="1">Permite a especificação de trechos para tradução e definir funcionalidades específicas por idioma.</p>
+			</section>
+
+			<section>
+				<br><br><br>
+				<h1>Quem utiliza???</h1>
+			</section>
+
+			<section>
+				<img src="Instagram.jpeg" style="">
+			</section>
+			<section>
+				<img src="disqus.jpeg" style="">
+			</section>
+			<section>
+				<img src="globo.com.jpeg" style="">
+			</section>
+			<section>
+				<img src="Pinterest.jpeg" style="">
+			</section>
+			<section>
+				<img src="guardian.jpeg" style="">
+			</section>
+
+			<section>
+				<br><br><br>
+				<h1>Arquitetura</h1>
+			</section>
+
+			<section>
+				<img src="django_architecture.jpg" height="612" width="357" style="">
+			</section>
+
+			<section>
+				<h2>Model-View-Template</h2>
+				<br>
+				<div style="text-align: left;" class="fragment" data-fragment-index="0">
+				<b>Model</b> - seus <u>dados</u>
+				</div>
+				<div style="text-align: left;">
+				<br>
+				</div>
+				<div style="text-align: left;" class="fragment" data-fragment-index="1">
+				<b>View</b> - lógica para processar seus <u>dados</u>
+				</div>
+				<div style="text-align: left;">
+				<br>
+				</div>
+				<div style="text-align: left;" class="fragment" data-fragment-index="2">
+				<b>Template</b> - apresentando seus <u>dados</u> para o usuário</div>
+			</section>
+
+            <section>
+                <h2>Model</h2>
+                <pre>
+<code data-trim>from django.contrib.auth.models import User
+from django.db import models
+
+class Palestrante(models.Model):
+    username = models.ForeignKey(User)
+    twitter = models.CharField(max_length=20)
+
+class Trilha(models.Molde):
+	nome = models.CharField(max_length=50, unique=True)
+	data = models.DateTimeField()
+
+class Palestra(models.Model):
+	trilha = models.ForeignKey(Trilha)
+	titulo = models.CharField(max_length=255)
+	palestrantes = models.ManyToMany(Palestrante)
+	resumo = models.TextField()
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Representação no BD</h2>
+                <pre>
+<code data-trim>BEGIN;
+CREATE TABLE "schedule_palestrante" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "username_id" integer NOT NULL,
+    "twitter" varchar(20) NOT NULL
+)
+;
+CREATE TABLE "schedule_trilha" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "nome" varchar(50) NOT NULL UNIQUE,
+    "data" datetime NOT NULL
+)
+;
+CREATE TABLE "schedule_palestra_palestrante" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "palestra_id" integer NOT NULL,
+    "palestrante_id" integer NOT NULL REFERENCES "schedule_palestrante" ("id"),
+    UNIQUE ("palestra_id", "palestrante_id")
+)
+;
+CREATE TABLE "schedule_palestra" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "trilha_id" integer NOT NULL REFERENCES "schedule_trilha" ("id"),
+    "titulo" varchar(255) NOT NULL,
+    "resumo" text NOT NULL
+)
+;
+COMMIT;
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>API</h2>
+                <pre>
+<code data-trim>In [1]: renne = Palestrante.objects.get(twitter='rennerocha')
+
+In [2]: trilha = Trilha.objects.create(nome='Dev Roots',
+   ...:     data=datetime.datetime(2013, 5, 11))
+
+In [3]: palestra = Palestra.objects.create(
+   ...:     titulo='Django: o framework web.',
+   ...:     trilha=trilha, resumo='Django')
+
+In [4]: Trilha.objects.filter(
+   ...:     palestra__titulo='Django: o framework web.')
+Out[4]: [&lt;Trilha: Dev Roots&gt;]
+
+In [5]: palestra.palestrantes.all()
+Out[5]: []
+
+In [6]: palestra.palestrante.add(renne)
+
+In [7]: palestra.palestrante.all()
+Out[7]: [&lt;Palestrante: renne&gt;]
+                </pre></code>
+
+                <p class="fragment"><font color="#ff0124">Nunca escreva SQL novamente...</font></p>
+                <p class="fragment">...não ser que seja necessário.</p>
+            </section>
+
+            <section>
+                <h2>View</h2>
+                <pre>
+<code data-trim>from django.http import Http404
+
+def detalhe_palestra(request, palestra_id):
+    try:
+        palestra = Palestra.objects.get(pk=palestra_id)
+    except Palestra.DoesNotExist:
+        raise Http404
+    return render_to_response('palestras/detalhes.html', {'palestra': palestra})
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Outros retornos</h2>
+
+                <p class="fragment">Não precisamos retornar apenas HTML...</p>
+                <pre class="fragment">
+<code data-trim>import csv
+from django.http import HttpResponse
+
+def some_view(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['First row', 'Foo', 'Bar', 'Baz'])
+    writer.writerow(['Second row', 'A', 'B', 'C', '"Testing"', "Here's a quote"])
+
+    return response
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Template</h2>
+                <p>base.html</p>
+                <pre>
+<code data-trim>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;{% block title %}{% endblock %}&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        {% block content %}{% endblock %}
+    &lt;/body&gt;
+&lt;/html&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Template</h2>
+                <p>palestras.html</p>
+                <pre>
+<code data-trim>{% extends 'base.html' %}
+
+{% block title %}Dev Camp - Palestras{% endblock %}
+
+{% block content %}
+&lt;h1&gt;Palestras&lt;/h1&gt;
+&lt;ul&gt;
+    {% for palestra in palestras %}
+    &lt;li&gt;{{ palestra.titulo }}&lt;br&gt;
+        {{ palestra.resumo }}&lt;/li&gt;
+    {% empty %}
+    &lt;li&gt;Nenhuma palestra :-( &lt;/li&gt;
+    {% endfor %}
+&lt;/ul&gt;
+{% endblock %}
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>URLs</h2>
+                <pre>
+<code data-trim>from django.conf.urls import patterns, url
+from django.views.generic.simple import direct_to_template
+
+urlpatterns = patterns('',
+    (r'^/$', direct_to_template, {'template': 'index.html'}),
+    url(r'^palestras/$', 'schedule.views.palestras', name='palestras'),
+    url(r'^palestra/(?P&lt;palestra_id&gt;\d+)/$', 'schedule.views.detalhe_palestra', name='detalhe_palestra'),)
+)
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Formulários</h2>
+                <br>
+                <p class="fragment">Biblioteca de manipulação de formulários.</p>
+                <br>
+                <p class="fragment">Geração automática do HTML do formulário.</p>
+                <br>
+                <p class="fragment">Valida dados submetidos.</p>
+                <br>
+                <p class="fragment">Reexibe o formulário caso existam erros de validação.</p>
+            </section>
+
+            <section>
+                <h2>Formulário Simples</h2>
+                <pre>
+<code data-trim>from django import forms
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=100)
+    message = forms.CharField()
+    sender = forms.EmailField()
+    cc_myself = forms.BooleanField(required=False)
+
+    def clean_message(self, value):
+        bad_words_list = ['fi*******ta', 'va******er', ]
+        if value in bad_words_list:
+            raise ValidationError('Sem palavrões!')</code></pre>
+            </section>
+
+            <section>
+                <h2>Formulário Simples</h2>
+                <pre>
+<code data-trim>from django.shortcuts import render
+from django.http import HttpResponseRedirect
+
+def contact(request):
+    if request.method == 'POST': # If the form has been submitted...
+        form = ContactForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            # Process the data in form.cleaned_data
+            # ...
+            return HttpResponseRedirect('/thanks/') # Redirect after POST
+    else:
+        form = ContactForm() # An unbound form
+
+    return render(request, 'contact.html', {
+        'form': form,
+    })</code></pre>
+            </section>
+
+            <section>
+                <h2>Model Form</h2>
+                <pre>
+<code data-trim>from django import forms
+from schedule.models import Palestra
+
+class PalestraForm(forms.ModelForm):
+
+    class Meta:
+        model = Palestra</code></pre>
+            </section>
+
+        <section>
+            <h2>Iniciando um projeto</h2>
+            <pre>
+<code data-trim>$ django-admin startproject devcamp</code></pre>
+
+            <pre class="fragment">
+<code data-trim>devcamp/
+    manage.py
+    devcamp/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py</code></pre>
+        </section>
+
+        <section>
+            <h2>Aplicações</h2>
+            <p>O ambiente montado é um <strong>projeto</strong>.</p>
+            <p class="fragment">Agora você precisa criar <strong>aplicações</strong> dentro deste projeto.</p>
+            <p class="fragment">Filosofia do Unix: <i>Write programs that do one thing and do it well</i></p>
+        </section>
+
+        <section>
+            <h2>Criando uma applicação</h2>
+            <pre>
+<code data-trim>$ django-admin startapp schedule</code></pre>
+
+            <pre class="fragment">
+<code data-trim>devcamp/
+    manage.py
+    devcamp/
+    schedule/
+        __init__.py
+        models.py
+        tests.py
+        views.py</code></pre>
+        </section>
+
+            <section>
+                <h2>Aplicações - Exemplos</h2>
+                <ul>
+                    <li class="fragment"><u>South</u> - migrações de bancos de dados<br>&nbsp;</li>
+                    <li class="fragment"><u>django-registration</u> - registro de contas de usuários<br>&nbsp;</li>
+                    <li class="fragment"><u>django-piston</u> - aplicações REST<br>&nbsp;</li>
+                    <li class="fragment"><u>django-debug-toolbar</u> - barra de debug para desenvolvedores</li>
+                </ul>
+            </section>
+
+			<section>
+				<br><br><br>
+				<h1>Quero saber mais</h1>
+			</section>
+
+            <section>
+                <ul>
+                    <li>Documentação oficial<br>
+                    <a href="https://www.djangoproject.com/">https://www.djangoproject.com/</a>
+                    <br>
+                    <br>
+                    </li>
+                <li class="fragment" data-fragment-index="0">Listas de discussão<br>django-users<br>django-brasil<br>
+                    <br>
+                </li>
+                <li class="fragment" data-fragment-index="1">IRC (Freenode)<br>#django-br<br>#django<br>
+                    <br>
+                </li>
+                <li class="fragment" data-fragment-index="2">Vídeos da DjangoCon<br>
+                    <a href="http://pyvideo.org/">http://pyvideo.org/</a>
+                    <br>
+                </li>
+                </ul>
+            </section>
+
+            <section>
+                <br><br><br>
+                <h1>Obrigado!</h1>
+                <br><br>
+                <h3>@rennerocha</h3>
+                <p>http://rennerocha.com/</p>
+                <p>renne@rennerocha.com</p>
+            </section>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+    width: 800,
+    height: 600,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
