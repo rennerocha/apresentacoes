@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Workshop - Django</title>
+
+		<meta name="description" content="Workshop - Django">
+		<meta name="author" content="Renne Rocha">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+			<section>
+				<img src="django-logo-negative.png">
+				<h3>
+					<em>Workshop - Django</em>
+				</h3>
+				<br>
+				<img src="secomp-logotipo.png" style="">
+				<p><i style="font-size: 20px;">20 / 08 / 2013</i></p>
+			</section>
+
+			<section>
+				<h2>Renne Rocha</h2>
+				<br>
+				<div class="fragment">Engenheiro Eletricista - Unicamp</div>
+				<br>
+				<div class="fragment">Desenvolvedor Python - Nokia Solutions and Networks</div>
+				<br>
+				<div class="fragment">Organizador do Caipira Ágil<br>http://caipiraagil.com/</div>
+				<br>
+				<div class="fragment">Fundador do Laboratório Hacker de Campinas<br>http://lhc.net.br/</div>
+			</section>
+
+            <section>
+                <br><br><br>
+                <h1>O que é Django?</h1>
+            </section>
+
+            <section>
+				<br><br><br>
+				<p>
+				<b>Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.</b>
+				</p>
+			</section>
+
+			<section>
+				<br><br><br>
+				<h1>Principais funcionalidades</h1>
+			</section>
+
+			<section>
+				<h2>Object-relational mapper (ORM)</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Seus modelos de dados são definidos&nbsp;<b>totalmente</b> em Python.</p>
+				<br>
+				<p class="fragment" data-fragment-index="1">Fornece uma API para acesso ao banco de dados.</p>
+				<br>
+				<p class="fragment" data-fragment-index="2">Independe de sistema de gerenciamento de banco de dados.</p>
+			</section>
+
+			<section>
+				<h2>Interface de administração automática</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Interface pronta para seu utilizada em produção para entrada, consulta, atualização e exclusão de dados.</p>
+				<br>
+				<p class="fragment" data-fragment-index="1">C R U D.</p>
+			</section>
+
+			<section>
+				<h2>URLs amigáveis</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Esquema limpo e elegante para definição de URLs</p>
+				<br>
+				<p class="fragment" data-fragment-index="1">Definidos em um módulo Python que faz o mapeamento de padrões de URL (expressões regulares) com funções Python (views).</p>
+			</section>
+
+			<section>
+				<h2>Sistema de templates</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Linguagem de templates amigável para designers.</p>
+				<br>
+				<p class="fragment" data-fragment-index="1">Facilita separação de código e apresentação.</p>
+			</section>
+
+			<section>
+				<h2>Internacionalização</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Suporte a aplicações multi-idiomas.</p>
+				<br>
+				<p class="fragment" data-fragment-index="1">Permite a especificação de trechos para tradução e definir funcionalidades específicas por idioma.</p>
+			</section>
+
+            <section>
+				<br><br><br>
+				<h1>PYTHON!</h1>
+                <h3 class="fragment">Baterias incluídas</h3>
+            </section>
+
+			<section>
+				<br><br><br>
+				<h1>Arquitetura</h1>
+			</section>
+
+			<section>
+				<img src="django_architecture.jpg" height="612" width="357" style="">
+			</section>
+
+			<section>
+				<h2>Model-View-Template</h2>
+				<br>
+				<div style="text-align: left;" class="fragment" data-fragment-index="0">
+				<b>Model</b> - seus <u>dados</u>
+				</div>
+				<div style="text-align: left;">
+				<br>
+				</div>
+				<div style="text-align: left;" class="fragment" data-fragment-index="1">
+				<b>View</b> - lógica para processar seus <u>dados</u>
+				</div>
+				<div style="text-align: left;">
+				<br>
+				</div>
+				<div style="text-align: left;" class="fragment" data-fragment-index="2">
+				<b>Template</b> - apresentando seus <u>dados</u> para o usuário</div>
+			</section>
+
+			<section>
+				<br><br><br>
+				<h1>Talk is cheap, show me the code!</h1>
+			</section>
+
+            <section>
+				<h2>O que vamos fazer?</h2>
+				<br>
+				<p class="fragment" data-fragment-index="0">Aplicação de enquetes em duas partes</p>
+				<br>
+                <p class="fragment">1. Área pública onde as pessoas podem ver e votar nas enquetes.</p>
+				<br>
+                <p class="fragment">2. Área administrativa onde podemos criar, editar e excluir enquetes.</p>
+            </section>
+
+            <section> 
+                <h2>Preparando o ambiente</h2>
+                <pre>
+<code data-trim>$ virtualenv ~/.virtualenvs/secomp2013</code></pre>
+
+                <pre class="fragment">
+<code data-trim>New python executable in /home/rennerocha/.virtualenvs/secomp2013/bin/python
+ Installing Setuptools.......................................done.
+ Installing Pip..............................................done.
+$ </code></pre>
+
+                <pre class="fragment">
+<code data-trim>$ source ~/.virtualenvs/secomp2013/bin/activate
+(secomp2013) $</code></pre>
+
+                <pre class="fragment">
+<code data-trim>(secomp2013) $ pip install django</code></pre>
+            </section>
+
+            <section>
+                <h2>Iniciando um projeto</h2>
+                <pre>
+<code data-trim>$ django-admin startproject secomp</code></pre>
+
+                <pre class="fragment">
+<code data-trim>
+secomp/
+    manage.py
+    secomp/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+        </code></pre>
+            </section>
+
+            <section>
+                <h2>Servidor de desenvolvimento</h2>
+                <pre>
+<code data-trim>$ python manage.py runserver</code></pre>
+
+                <pre class="fragment">
+<code data-trim>
+Validating models...
+
+0 errors found
+August 14, 2013 - 12:02:23
+Django version 1.5.1, using settings 'secomp.settings'
+Development server is running at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+
+</code></pre>
+            </section>
+
+            <section>
+                <h2>Configurando Banco de Dados</h2>
+                <pre>
+<code data-trim>DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'secomp.db',
+    }
+}</code></pre>
+            </section>
+
+            <section>
+                <pre>
+<code data-trim>INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # Uncomment the next line to enable the admin:
+    # 'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    # 'django.contrib.admindocs',
+)</code></pre>
+
+                <pre class="fragment">
+<code data-trim>$ python manage.py syncdb</code></pre>
+            </section>
+
+            <section>
+                <h2>Aplicações</h2>
+                <p>O ambiente montado é um <strong>projeto</strong>.</p>
+                <p class="fragment">Agora você precisa criar <strong>aplicações</strong> dentro deste projeto.</p>
+                <p class="fragment">Filosofia do Unix: <i>Write programs that do one thing and do it well</i></p>
+            </section>
+
+            <section>
+                <h2>Criando uma applicação</h2>
+                <pre>
+<code data-trim>$ django-admin startapp polls</code></pre>
+
+            <pre class="fragment">
+<code data-trim>secomp/
+    manage.py
+    secomp/
+    polls/
+        __init__.py
+        models.py
+        tests.py
+        views.py</code></pre>
+            </section>
+
+            <section>
+                <h2>Models</h2>
+                <pre>
+<code data-trim>from django.db import models
+
+class Poll(models.Model):
+    question = models.CharField(max_length=200)
+    pub_date = models.DateTimeField('date published')
+
+class Choice(models.Model):
+    poll = models.ForeignKey(Poll)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)</code></pre>
+            </section> 
+
+            <section>
+                <pre>
+<code data-trim>INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # Uncomment the next line to enable the admin:
+    # 'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    # 'django.contrib.admindocs',
+    'polls',
+)</code></pre>
+            </section>
+
+            <section>
+                <pre>
+<code data-trim>$ python manage.py sql polls</code></pre>
+
+                <pre class="fragment">
+<code data-trim>BEGIN;
+CREATE TABLE "polls_poll" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "question" varchar(200) NOT NULL,
+    "pub_date" datetime NOT NULL
+)
+;
+CREATE TABLE "polls_choice" (
+    "id" integer NOT NULL PRIMARY KEY,
+    "poll_id" integer NOT NULL REFERENCES "polls_poll" ("id"),
+    "choice_text" varchar(200) NOT NULL,
+    "votes" integer NOT NULL
+)
+;
+
+COMMIT;</code></pre>
+
+                <pre class="fragment">
+<code data-trim>$ python manage.py syncdb</code></pre>
+            </section>
+
+            <section>
+                <pre><code data-trim>$ python manage.py shell</code></pre>
+
+                <pre class="fragment"><code data-trim>>>> from polls.models import Poll, Choice</code></pre>
+                <pre class="fragment"><code data-trim>>>> Poll.objects.all()</code></pre>
+                <pre class="fragment"><code data-trim>>>> from django.utils import timezone
+>>> p = Poll(question="vi ou emacs?", pub_date=timezone.now())
+>>> p.save()</code></pre>
+                <pre class="fragment"><code data-trim>>>> p.id</code></pre>
+                <pre class="fragment"><code data-trim>>>> p.choice_set.all()</code></pre>
+            </section>
+
+            <section>
+                <pre>
+<code data-trim>class Poll(models.Model):
+    # ...
+    def __unicode__(self):
+        return self.question
+
+class Choice(models.Model):
+    # ...
+    def __unicode__(self):
+        return self.choice_text
+</code></pre>
+
+                <pre class="fragment"><code data-trim>>>> Poll.objects.all()</code></pre>
+            </section>
+
+            <section>
+                <h2>Adicionando opções</h2>
+                <pre class="fragment"><code data-trim>>>> c = Choice(poll=p, choice_text='vi')
+>>> c.save()</code></pre>
+                <pre class="fragment"><code data-trim>>>> p.choice_set.create(choice_text='emacs')</code></pre>
+                <pre class="fragment"><code data-trim>>>> p.choice_set.count()</code></pre>
+                <pre class="fragment"><code data-trim>>>> p.choice_set.all()</code></pre>
+            </section>
+
+            <section>
+                <h2>Pesquisas</h2>
+                <pre class="fragment"><code data-trim>>>> p.choice_set.filter(choice_text__startswith='em')</code></pre>
+                <pre class="fragment"><code data-trim>>>> Poll.objects.get(pk=1)</code></pre>
+                <pre class="fragment"><code data-trim>>>> from django.utils import timezone
+>>> current_year = timezone.now().year
+>>> Poll.objects.get(pub_date__year=current_year)</code></pre>
+                <pre class="fragment"><code data-trim>>>> c = p.choice_set.create(choice_text='nenhum dos dois')
+>>> c.votes = 42
+>>> c.save()
+>>> p.choice_set.filter(votes__gte=42)</code></pre>
+                <pre class="fragment"><code data-trim>>>> Poll.objects.get(pk=1)</code></pre>
+	        </section>
+
+            <section>
+                <h2>Por baixo dos panos</h2>
+                <pre class="fragment"><code data-trim>>>> from django import db
+>>> db.connection.queries</code></pre>
+            </section>
+
+            <section>
+                <h2>Interface administrativa</h2>
+                <pre>
+<code data-trim>INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # Uncomment the next line to enable the admin:
+    'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    # 'django.contrib.admindocs',
+)</code></pre>
+
+                <pre class="fragment">
+<code data-trim>$ python manage.py syncdb</code></pre>
+            </section>
+
+            <section>
+                <pre>
+<code data-trim>from django.conf.urls import patterns, include, url
+
+# Uncomment the next two lines to enable the admin:
+from django.contrib import admin
+admin.autodiscover()
+
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', '{{ project_name }}.views.home', name='home'),
+    # url(r'^{{ project_name }}/', include('{{ project_name }}.foo.urls')),
+
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+    url(r'^admin/', include(admin.site.urls)),
+)</code></pre>
+            </section>
+
+            <section>
+                <pre>
+<code data-trim># polls/admin.py
+from django.contrib import admin
+from polls.models import Poll
+
+admin.site.register(Poll)</code></pre>
+            </section>
+
+            <section>
+                <pre>
+<code data-trim># polls/admin.py
+from django.contrib import admin
+from polls.models import Poll
+
+class PollAdmin(admin.ModelAdmin):
+    fields = ['pub_date', 'question']
+
+admin.site.register(Poll, PollAdmin)</code></pre>
+            </section>
+
+            <section>
+                <pre>
+<code data-trim># polls/admin.py
+from django.contrib import admin
+from polls.models import Poll
+
+class PollAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['question']}),
+        ('Date information', {'fields': ['pub_date']}),
+    ]
+
+admin.site.register(Poll, PollAdmin)</code></pre>
+            </section>
+
+            <section>
+                <pre>
+<code data-trim># polls/admin.py
+# ...
+from polls.models import Choice
+
+#...
+admin.site.register(Choice)</code></pre>
+            </section>
+
+
+
+            <section>
+                <pre>
+<code data-trim># polls/admin.py
+from django.contrib import admin
+from polls.models import Choice, Poll
+
+class ChoiceInline(admin.StackedInline):
+    model = Choice
+    extra = 3
+
+class PollAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['question']}),
+        ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
+    ]
+    inlines = [ChoiceInline]
+
+admin.site.register(Poll, PollAdmin)</code></pre>
+            </section>
+
+            <section>
+                <pre>
+<code data-trim># polls/admin.py
+#...
+class ChoiceInline(admin.TabularInline):
+#...</code></pre>
+            </section>
+
+            <section>
+                <pre><code data-trim>list_filter = ['pub_date']</code></pre>
+                <pre class="fragment"><code data-trim>search_fields = ['question']</code></pre>
+                <pre class="fragment"><code data-trim>date_hierarchy = ['pub_date']</code></pre>
+            </section>
+
+
+            <section>
+                <br><br>
+                <h1>Obrigado!</h1>
+                <br><br>
+                <h3>@rennerocha</h3>
+                <p>http://rennerocha.com/</p>
+                <p>renne@rennerocha.com</p>
+            </section>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+    width: 800,
+    height: 600,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
